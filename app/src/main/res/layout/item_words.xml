@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingVertical="50dp"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/edt_eng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bac_1"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:fontFamily="@font/font_1"
+        android:hint="English"
+        />
+
+    <EditText
+        android:id="@+id/edt_uzb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bac_1"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:fontFamily="@font/font_1"
+        android:hint="Uzbek"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Add"
+        android:fontFamily="@font/font_1"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:background="@drawable/bac_1"
+        android:backgroundTint="#0027FF"
+        />
+
+</LinearLayout>
