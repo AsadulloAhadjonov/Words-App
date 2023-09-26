@@ -39,6 +39,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WORDS"
+        android:textSize="15sp"
+        android:textColor="#fff"
+        android:fontFamily="@font/book"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="20dp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -55,6 +68,21 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="20dp"
         android:src="@drawable/baseline_add_24"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_test"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="START TEST"
+        android:background="@drawable/bac_1"
+        android:backgroundTint="#0027FF"
+        android:textColor="#fff"
+        android:fontFamily="@font/book"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.TestFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/txt_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#0027FF"
+        android:paddingLeft="20dp"
+        >
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ENG-UZB"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:fontFamily="@font/carmela"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TEST"
+            android:textSize="27sp"
+            android:textColor="#fff"
+            android:fontFamily="@font/book"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:gravity="center"
+        android:padding="30dp"
+        android:textColor="#fff"
+        android:fontFamily="@font/book"
+        android:background="@drawable/bac_2"
+        android:backgroundTint="#0027FF"
+        android:textSize="30sp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_home"
+        />
+
+    <LinearLayout
+        android:id="@+id/javob_1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/bac_1"
+        android:elevation="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textSize="16sp"
+            android:fontFamily="@font/carmela"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/javob_2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/bac_1"
+        android:elevation="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textSize="16sp"
+            android:fontFamily="@font/carmela"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/javob_3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/bac_1"
+        android:elevation="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textSize="16sp"
+            android:fontFamily="@font/carmela"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/javob_4"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/bac_1"
+        android:elevation="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textSize="16sp"
+            android:fontFamily="@font/carmela"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

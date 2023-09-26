@@ -1,60 +1,67 @@
 package com.asadullo.wordsapp.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.asadullo.wordsapp.R
+import com.asadullo.wordsapp.databinding.FragmentTestBinding
+import com.asadullo.wordsapp.db.DbHelperWords
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TestFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TestFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private val binding by lazy { FragmentTestBinding.inflate(layoutInflater) }
+    var javob1 = true
+    var javob2 = true
+    var javob3 = true
+    var javob4 = true
+    private lateinit var dbHelperWords: DbHelperWords
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test, container, false)
+
+        dbHelperWords.dao().get()
+
+        binding.javob1.setOnClickListener {
+            if (javob1){
+                binding.javob1.setBackgroundResource(R.drawable.bac_j_1)
+                binding.javob2.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob3.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob4.setBackgroundResource(R.drawable.bac_j_2)
+            }
+        }
+
+        binding.javob2.setOnClickListener {
+            if (javob2){
+                binding.javob1.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob2.setBackgroundResource(R.drawable.bac_j_1)
+                binding.javob3.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob4.setBackgroundResource(R.drawable.bac_j_2)
+            }
+        }
+
+        binding.javob3.setOnClickListener {
+            if (javob3){
+                binding.javob1.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob2.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob3.setBackgroundResource(R.drawable.bac_j_1)
+                binding.javob4.setBackgroundResource(R.drawable.bac_j_2)
+            }
+        }
+
+        binding.javob4.setOnClickListener {
+            if (javob4){
+                binding.javob1.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob2.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob3.setBackgroundResource(R.drawable.bac_j_2)
+                binding.javob4.setBackgroundResource(R.drawable.bac_j_1)
+            }
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TestFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TestFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

@@ -13,6 +13,7 @@ import com.asadullo.wordsapp.Models.User
 import com.asadullo.wordsapp.Models.UserWords
 import com.asadullo.wordsapp.R
 import com.asadullo.wordsapp.databinding.FragmentWordsBinding
+import com.asadullo.wordsapp.databinding.ItemAdapterBinding
 import com.asadullo.wordsapp.databinding.ItemDialogBinding
 import com.asadullo.wordsapp.databinding.ItemWordsBinding
 import com.asadullo.wordsapp.db.DbHelper
@@ -34,7 +35,14 @@ class WordsFragment : Fragment() {
 
         dbHelper = DbHelperWords.getIns(binding.root.context)
         list = dbHelper.dao().get() as ArrayList<UserWords>
-        adapter = AdapterWords(list)
+        adapter = AdapterWords(list, object : AdapterWords.POSITION{
+            override fun position(position: Int, eng: String, uzb: String) {
+                binding.position.text = "${position+1} :WORDS"
+                binding.btnTest.setOnClickListener {
+                    findNavController().navigate(R.id.testFragment, bundleOf("position" to position, "eng" to eng, "uzb" to uzb))
+                }
+            }
+        })
         binding.rv.adapter = adapter
 
         binding.add.setOnClickListener {
@@ -52,7 +60,6 @@ class WordsFragment : Fragment() {
 
             dialog.show()
         }
-
         return binding.root
     }
 
