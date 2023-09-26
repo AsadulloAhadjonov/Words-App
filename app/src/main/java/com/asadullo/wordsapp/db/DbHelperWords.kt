@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.asadullo.wordsapp.Models.User
 import com.asadullo.wordsapp.Models.UserWords
 
-@Database(entities = [UserWords::class], version = 1)
+@Database(entities = [UserWords::class, User::class], version = 1)
 abstract class DbHelperWords:RoomDatabase() {
 
     abstract fun dao():DbInterfaceWords

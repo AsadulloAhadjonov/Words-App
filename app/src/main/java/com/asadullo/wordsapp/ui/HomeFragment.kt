@@ -12,13 +12,13 @@ import com.asadullo.wordsapp.Models.User
 import com.asadullo.wordsapp.R
 import com.asadullo.wordsapp.databinding.FragmentHomeBinding
 import com.asadullo.wordsapp.databinding.ItemDialogBinding
-import com.asadullo.wordsapp.db.DbHelper
+import com.asadullo.wordsapp.db.DbHelperWords
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class HomeFragment : Fragment() {
 
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
-    private lateinit var dbHelper: DbHelper
+    private lateinit var dbHelper: DbHelperWords
     private lateinit var adapter: AdapterRv
     private lateinit var list :ArrayList<User>
     override fun onCreateView(
@@ -26,11 +26,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        dbHelper = DbHelper.getIns(binding.root.context)
-        list = dbHelper.dao().get() as ArrayList<User>
+        dbHelper = DbHelperWords.getIns(binding.root.context)
+        list = dbHelper.dao().getAllGroups() as ArrayList<User>
         adapter = AdapterRv(list, object : AdapterRv.Clikc{
             override fun click(user: User, position: Int, unit: String) {
-                findNavController().navigate(R.id.wordsFragment, bundleOf("group" to unit, "aa" to user.name))
+                findNavController().navigate(R.id.wordsFragment, bundleOf("group" to unit, "keyGroup" to user))
             }
         })
         binding.rv.adapter = adapter
@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
 
             item.btnAdd.setOnClickListener {
                 val user = User(item.edtGroupName.text.toString())
-                dbHelper.dao().add(user)
+                dbHelper.dao().addGroup(user)
                 binding.rv.adapter = adapter
                 onResume()
                 dialog.dismiss()
@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
         super.onResume()
 
         adapter.list.clear()
-        adapter.list.addAll(dbHelper.dao().get())
+        adapter.list.addAll(dbHelper.dao().getAllGroups())
         adapter.notifyDataSetChanged()
     }
 

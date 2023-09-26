@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import com.asadullo.wordsapp.Models.UserWords
 import com.asadullo.wordsapp.R
 import com.asadullo.wordsapp.databinding.FragmentTestBinding
 import com.asadullo.wordsapp.db.DbHelperWords
@@ -16,10 +18,17 @@ class TestFragment : Fragment() {
     var javob2 = true
     var javob3 = true
     var javob4 = true
+    private lateinit var dbHelperWords: DbHelperWords
+    private lateinit var list:ArrayList<UserWords>
+    var count = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        list = bundleOf().getSerializable("keyList") as ArrayList<UserWords>
+
+        list.shuffle()
+
 
         binding.javob1.setOnClickListener {
             if (javob1){
@@ -60,5 +69,8 @@ class TestFragment : Fragment() {
         return binding.root
     }
 
+    fun writeQuestion(){
+        binding.textWord.text = list[count].eng
+    }
 
 }

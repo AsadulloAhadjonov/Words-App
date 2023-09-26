@@ -3,13 +3,20 @@ package com.asadullo.wordsapp.db
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.asadullo.wordsapp.Models.User
 import com.asadullo.wordsapp.Models.UserWords
 
 @Dao
 interface DbInterfaceWords {
     @Insert
-    fun add(userWords: UserWords)
+    fun addWord(userWords: UserWords)
 
     @Query("select * from userwords")
-    fun get():List<UserWords>
+    fun getAllWords():List<UserWords>
+
+    @Insert
+    fun addGroup(user: User)
+
+    @Query("select * from user")
+    fun getAllGroups():List<User>
 }
