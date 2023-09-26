@@ -144,4 +144,14 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/btn_next"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bac_1"
+        android:backgroundTint="#0027FF"
+        android:layout_marginLeft="280dp"
+        android:src="@drawable/next"
+        />
+
 </LinearLayout>

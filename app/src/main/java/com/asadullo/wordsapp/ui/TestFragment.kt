@@ -16,13 +16,10 @@ class TestFragment : Fragment() {
     var javob2 = true
     var javob3 = true
     var javob4 = true
-    private lateinit var dbHelperWords: DbHelperWords
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        dbHelperWords.dao().get()
 
         binding.javob1.setOnClickListener {
             if (javob1){
