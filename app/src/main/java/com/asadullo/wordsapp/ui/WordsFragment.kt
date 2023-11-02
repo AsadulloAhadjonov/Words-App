@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.asadullo.wordsapp.Adapter.AdapterWords
 import com.asadullo.wordsapp.Models.User
 import com.asadullo.wordsapp.Models.UserWords
@@ -23,6 +25,7 @@ class WordsFragment : Fragment() {
     private lateinit var adapter: AdapterWords
     private lateinit var list: ArrayList<UserWords>
     lateinit var user: User
+    var wordsPosition = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +38,9 @@ class WordsFragment : Fragment() {
         dbHelper = DbHelperWords.getIns(binding.root.context)
         list = dbHelper.dao().getAllWords() as ArrayList<UserWords>
         adapter = AdapterWords(list, object : AdapterWords.POSITION {
-            override fun position(position: Int, eng: String, uzb: String) {
-                binding.position.text = "${position + 1} :WORDS"
+            override fun position(position: Int, eng: String, uzb: String, user: UserWords) {
+                wordsPosition = "${position + 1} :WORDS"
+                binding.position.text = wordsPosition
                 binding.btnTest.setOnClickListener {
                     if (list.size<4){
                         Toast.makeText(
@@ -54,6 +58,34 @@ class WordsFragment : Fragment() {
             }
         })
         binding.rv.adapter = adapter
+
+        val itemTouchHelper = object : ItemTouchHelper.Callback(){
+            override fun getMovementFlags(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ): Int {
+                val swipe = ItemTouchHelper.START or ItemTouchHelper.END
+                return makeMovementFlags(0, swipe)
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                adapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                adapter.onDismiss(viewHolder.adapterPosition)
+                dbHelper.dao().delete(dbHelper.dao().getAllWords()[viewHolder.position])
+            }
+
+
+        }
+
+        ItemTouchHelper(itemTouchHelper).attachToRecyclerView(binding.rv)
 
         binding.add.setOnClickListener {
             val item = ItemWordsBinding.inflate(LayoutInflater.from(binding.root.context))

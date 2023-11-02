@@ -1,6 +1,7 @@
 package com.asadullo.wordsapp.db
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.asadullo.wordsapp.Models.User
@@ -19,4 +20,7 @@ interface DbInterfaceWords {
 
     @Query("select * from user")
     fun getAllGroups():List<User>
+
+    @Delete
+    fun delete(userWords: UserWords)
 }
